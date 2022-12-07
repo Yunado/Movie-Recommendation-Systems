@@ -15,8 +15,8 @@ df2 = df2.rename(columns={'id':'movie_id'})
 
 df2=df2.merge(df1,on='movie_id') # 20 columns -> 23 columns
 columnNames = df2.columns
-print(f'column names:{columnNames}')
-print('df2 shape before ranking:',df2.shape) #(4803, 23)
+# print(f'column names:{columnNames}')
+# print('df2 shape before ranking:',df2.shape) #(4803, 23)
 # print(df2.head(3))
 
 avg_vote = df2['vote_average'].mean()
@@ -27,7 +27,7 @@ quantile_vote = df2['vote_count'].quantile(0.75)
 rank_movies=df2[df2['vote_count']>=quantile_vote]
 
 #shape of df2 dataframe after ranking
-print('df2 shape after ranking:',rank_movies.shape) # (1203, 23)
+# print('df2 shape after ranking:',rank_movies.shape) # (1203, 23)
 
 def score(x,q=quantile_vote,m=avg_vote):
     v=x['vote_count']
@@ -43,4 +43,4 @@ print(pop.head(5))
     If you want to know the genres, you could use below command.
     In fact you could check all info based on keys stored in columnNames.
 '''
-print(pop['genres'].iloc[0:5])
+print(pop['original_title'].iloc[0:5])
