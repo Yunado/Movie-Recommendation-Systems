@@ -1,4 +1,15 @@
 {% extends 'layout.html'%}
-
 {% block content %}
+<h1 style="font-size:30px">Autoencoder Based Recommendation </h1>
+<form method="POST"  class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Please enter the User Id" aria-label="Search", name="searched">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+{% for item in targetItem %}
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <p><span class="fst-italic">Movie Name: </span>{{ item.movie_name }}</p>
+            <p><span class="fst-italic">Rating: </span>{{ item.rating }}</p>
+        </div>
+    {% endfor %}
 {% endblock content %}
