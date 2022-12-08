@@ -64,6 +64,12 @@ def recommend_movie(user_id, n_items=10):
     ### Input: user id, number of recommendations default 10
     ### Return: a list of movie recommended to the user, based on his rating.
     ### [[movie name, recommendation rating]]"""
+    user_movie = get_user_info(user_id)
+    if not user_movie:
+        tmp = movie_data.sort_values(by=["vote_average"], ascending=False)
+        top_10 = tmp[tmp["vote_count"] > 1000].head(10)[["original_title", "vote_average"]].values.tolist()
+        return top_10
+
     movie_pred = movie_data.loc[movie_data["user_id"] != user_id]["movie_id"]
 
     testset = []
