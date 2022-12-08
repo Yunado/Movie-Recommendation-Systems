@@ -2,9 +2,9 @@
 from flask import render_template, request, jsonify
 from app import app
 from webforms import SearchForm
-import content_based_system as cb
-import matrix_factorization_system as mfs
-import user_based_system as ubs
+import back_end.content_based_system as cb
+import back_end.matrix_factorization_system as mfs
+import back_end.user_based_system as ubs
 
 
 app.config['SECRET_KEY'] = 'any secret string'
