@@ -134,10 +134,13 @@ def get_recommendations(title):
             res.append([index, value])  
     return res
 
+
 def print_result(rec_movies):
     for index, value in rec_movies:
         print("Index: " + str(index) + ", " + "Movie name: " + value)
 
-rec_movies = get_recommendations('The Dark Knight Rises')
-print_result(rec_movies)
+if __name__ == "__main__":
+
+    rec_movies = get_recommendations('The Dark Knight Rises')
+    print_result(rec_movies)
 
