@@ -12,6 +12,7 @@ We developed a website that is used for recommending movies to the user. The web
   Each filter would return the top 5 relevant movies so the whole content-based filter system would return 10 movies for the users. 
 
 2. User-based Filter System
+  The users could use this system by searching for a movie based on the movie's genre. The system will show top 50 relevant movies and show them in different genres. In this project, we don't ask new users to rating movies, the users only need to search movies based on genre types. And we focus on recommending movies by genres.
 
 3. Matrix Factorization-based System
 
