@@ -19,9 +19,9 @@ We developed a website that is used for recommending movies to the user. The web
 
 ## Getting Started
 
-### File Structure
+### Front End File Structure
 ```bash
-demo
+front_end
 ├── app/
 │ ├── static/
 │ │ ├── script/
@@ -42,6 +42,7 @@ demo
 │ └── matrix_factorization_system.py
 │ └── content_based_system.py
 │ └── dataset 
+│ └── webforms
 └── main.py
 ```
 
