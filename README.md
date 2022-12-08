@@ -184,7 +184,7 @@ Qiyang Chen, qiyangc2@illinois.edu
 User-based Filter Recommendation System design and implementation
 
 Yanhao Qiu, yanhaoq2@illinois.edu
-Data Acquisition, Preparation and Processing
+Data Acquisition and Processing, assist with Recommendation System design and implementation
 
 ## References
 
