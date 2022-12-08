@@ -52,19 +52,22 @@ front_end
 * pandas
 * numpy
 * sklearn
+* flask 
 * scikit-suprise
 * python >= 3.5
 
 ### Installing
 
-* git pull
+* git clone git@github.com:woshicqy/CS410-Final-Project-Team-Early-Offer.git
 * pip install flask flask_sqlalchemy pymysql pyyaml
+* pip install scikit-surprise
 
 ### Executing program
 
 ```bash
-cd front_end 
-source env/bin/activate
+cd front_end
+python3 -m venv env
+source .venv/bin/activate
 export FLASK_APP=app && export FLASK_DEBUG=1
 flask run
 ```
