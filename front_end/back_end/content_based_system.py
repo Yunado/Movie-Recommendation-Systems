@@ -8,8 +8,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 # Read two datasets
-credits = pd.read_csv('dataset/tmdb_5000_credits.csv')
-movies = pd.read_csv('dataset/tmdb_5000_movies.csv')
+credits = pd.read_csv('back_end/dataset/tmdb_5000_credits.csv')
+movies = pd.read_csv('back_end/dataset/tmdb_5000_movies.csv')
 movies = movies.rename(columns={'id':'movie_id'})
 
 # Get TF-IDF matrix

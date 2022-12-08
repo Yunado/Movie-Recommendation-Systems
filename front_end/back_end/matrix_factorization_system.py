@@ -15,8 +15,8 @@ from surprise.model_selection import cross_validate, GridSearchCV, train_test_sp
 random.seed("CS410")
 
 # Read in data
-movie_credits = pd.read_csv('dataset/tmdb_5000_credits.csv')
-movies = pd.read_csv('dataset/tmdb_5000_movies.csv')
+movie_credits = pd.read_csv('back_end/dataset/tmdb_5000_credits.csv')
+movies = pd.read_csv('back_end/dataset/tmdb_5000_movies.csv')
 # print(df2.head(3)) # 20 columns
 movie_data = movies.rename(columns={'id': 'movie_id'})
 movie_data = movie_data.merge(movie_credits, on='movie_id')  # 20 columns -> 23 columns

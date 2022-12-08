@@ -9,8 +9,8 @@ warnings.filterwarnings("ignore")
 
 def load_data(credits_file='',movies_file=''):
     # Read in data
-    df1 = pd.read_csv('dataset/tmdb_5000_credits.csv')
-    df2 = pd.read_csv('dataset/tmdb_5000_movies.csv')
+    df1 = pd.read_csv('back_end/dataset/tmdb_5000_credits.csv')
+    df2 = pd.read_csv('back_end/dataset/tmdb_5000_movies.csv')
 
     # df1 = pd.read_csv(credits_file)
     # df2 = pd.read_csv(movies_file)
