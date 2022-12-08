@@ -19,6 +19,33 @@ We developed a website that is used for recommending movies to the user. The web
 
 ## Getting Started
 
+### Front End File Structure
+```bash
+front_end
+├── app/
+│ ├── static/
+│ │ ├── script/
+│ │ │ └── model.js
+│ │ ├── styles/
+│ │ │ └── custom.css
+│ │ └── layout.html
+│ ├── templates/
+│ │ └── autoencoder_based.html
+│ │ └── content_based.html
+│ │ └── home.html
+│ │ └── layout.html
+│ │ └── user_content
+│ └── __init__.py
+│ ├── routes.py
+├── Back_end
+│ └── user_based_system.py
+│ └── matrix_factorization_system.py
+│ └── content_based_system.py
+│ └── dataset 
+│── webforms
+└── main.py
+```
+
 ### Dependencies
 
 * random
