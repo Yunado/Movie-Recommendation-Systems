@@ -67,7 +67,7 @@ front_end
 ```bash
 cd front_end
 python3 -m venv env
-source .venv/bin/activate
+source env/bin/activate
 export FLASK_APP=app && export FLASK_DEBUG=1
 flask run
 ```
