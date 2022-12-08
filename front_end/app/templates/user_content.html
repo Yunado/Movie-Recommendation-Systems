@@ -1,4 +1,32 @@
 {% extends 'layout.html'%}
-
 {% block content %}
+<h1 style="font-size:30px">User Based Recommendation</h1>
+<form method="POST" role="search">
+    <input type="submit" name="submit_button" value="Drama"> 
+    <input type="submit" name="submit_button" value="Crime">
+    <input type="submit" name="submit_button" value="Thriller">
+    <input type="submit" name="submit_button" value="Action">
+    <input type="submit" name="submit_button" value="Comedy">
+    <input type="submit" name="submit_button" value="Romance">
+    <input type="submit" name="submit_button" value="Science Fiction">
+    <input type="submit" name="submit_button" value="Mystery">
+    <input type="submit" name="submit_button" value="Adventure">
+    <input type="submit" name="submit_button" value="History">
+    <input type="submit" name="submit_button" value="War">
+    <input type="submit" name="submit_button" value="Fantasy">
+    <input type="submit" name="submit_button" value="Animation">
+    <input type="submit" name="submit_button" value="Family">
+    <input type="submit" name="submit_button" value="Horror">
+    <input type="submit" name="submit_button" value="Western">
+</form>
+<!-- <input type="submit" name="submit_button" value="Drama"> -->
+
+{% for item in targetItem %}
+        <div class="shadow p-2 mb-3 bg-body rounded">
+            <p><span class="fst-italic">Movie Name: </span>{{ item.movie_name }}</p>
+            <p><span class="fst-italic">Genre: </span>{{ item.genre }}</p>
+        </div>
+    {% endfor %}
+
+
 {% endblock content %}

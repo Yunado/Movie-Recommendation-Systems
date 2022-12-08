@@ -4,7 +4,8 @@ from app import app
 from webforms import SearchForm
 import content_based_system as cb
 import matrix_factorization_system as mfs
-# from app import database
+import user_based_system as ubs
+
 
 app.config['SECRET_KEY'] = 'any secret string'
 
@@ -13,36 +14,24 @@ app.config['SECRET_KEY'] = 'any secret string'
 def home():
     return render_template("home.html", title='Home Page')
 
-@app.route("/user_content")
+@app.route("/user_content",methods=['GET', 'POST'])
 def user_content():
-    return render_template("user_content.html", title='User Based Recommendation')    
+    targetItem = []
+    res = ubs.movies_ranking()
+    if request.method == 'POST':
+        form = request.form
+        genre = request.form['submit_button']
+        for movie_name in res[genre]:
+            item = {
+                 "movie_name" : movie_name,
+                 "genre" : genre
+            }
+            targetItem.append(item)
 
-# @app.route("/content_based")
-# def content_based():
-#     return render_template("content_based.html", title='Contant Based Recommendation') 
+    return render_template("user_content.html",
+                            targetItem=targetItem
+    )    
 
-# @app.route("/content_result")
-# def content_based():
-#     return render_template("content_based.html", title='Contant Based Recommendation') 
-
-# @app.route('/content_based', methods=["POST","GET"])
-# def search():
-#     print("wtf")
-#     form = SearchForm()
-#     data = form.searched.data #input value
-#     print(data)
-#     rec_movies = cb.get_recommendations('The Dark Knight Rises')
-#     targetItem = []
-#     for index, movie in rec_movies:
-#         item = {
-#             "movie_name" : movie
-#         }
-#         targetItem.append(item)
-#     return render_template(
-#         "content_based.html",
-#         form=form,
-#         targetItem=targetItem
-#     )
 @app.route('/content_based', methods=['GET', 'POST'])
 def content_based():
     form = SearchForm()
@@ -52,7 +41,6 @@ def content_based():
          form = SearchForm()
          data = form.searched.data #input value
          data = data.strip()
-         print(data)
          rec_movies = cb.get_recommendations(data)
          for index, movie in rec_movies:
             item = {

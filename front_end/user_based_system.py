@@ -1,17 +1,19 @@
 # Data processing
 import pandas as pd
 import numpy as np
+import collections
+import re
 import warnings
 warnings.filterwarnings("ignore")
 
 
-def load_data(credits_file,movies_file):
+def load_data(credits_file='',movies_file=''):
     # Read in data
     df1 = pd.read_csv('dataset/tmdb_5000_credits.csv')
     df2 = pd.read_csv('dataset/tmdb_5000_movies.csv')
 
-    df1 = pd.read_csv(credits_file)
-    df2 = pd.read_csv(movies_file)
+    # df1 = pd.read_csv(credits_file)
+    # df2 = pd.read_csv(movies_file)
     # print(df2.head(3)) # 20 columns
     df2 = df2.rename(columns={'id':'movie_id'})
     return df1,df2
@@ -19,7 +21,7 @@ def load_data(credits_file,movies_file):
 
 # print(f'df2 columns: {df2.columns}')
 
-def movies_ranking(credits_file,movies_file):
+def movies_ranking(credits_file='',movies_file='',topK=100):
     df1,df2 = load_data(credits_file,movies_file)
     df2=df2.merge(df1,on='movie_id') # 20 columns -> 23 columns
     columnNames = df2.columns
@@ -50,12 +52,38 @@ def movies_ranking(credits_file,movies_file):
         If you want to know the genres, you could use below command.
         In fact you could check all info based on keys stored in columnNames.
     '''
+    store_dict = collections.defaultdict(list)
     # print(pop['genres'].iloc[0:5])
-    return pop
+    # print(pop['title_x'].iloc[0:5])
+    # print(pop['title_y'].iloc[0:5])
+    for i in range(topK):
+        genre_item = pop['genres'].iloc[i]
+        movie_name = pop['title_x'].iloc[i]
+        # genre_item = genre_item.replace(' ','')
+        # genre_item = genre_item.replace('"','')
+        
+        p1 = re.compile(r'{.*?}', re.S)
+        genre_item = re.findall(p1, genre_item)
+
+        p2 = re.compile(r'".*?"', re.S)
+        for j in range(len(genre_item)):
+
+            # print(re.findall(p2, genre_item[j]))
+            genreName = re.findall(p2, genre_item[j])[-1].replace('"','')
+            # print('name:',genreName)
+            if movie_name not in store_dict[genreName]:
+                store_dict[genreName].append(movie_name)
+        # print(f'store dict:{store_dict}')
+        # exit()
+    # print(f'store_dict:{store_dict}')
+
+
+    return store_dict
 
 if __name__ == '__main__':
     # print('Test')
     credits = 'dataset/tmdb_5000_credits.csv'
     movies = 'dataset/tmdb_5000_movies.csv'
-    res = movies_ranking(credits,movies)
-    print(res['genres'][0])
+    TopK = 100
+    res = movies_ranking(credits,movies,TopK)
+    print(res)
