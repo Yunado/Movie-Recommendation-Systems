@@ -1,8 +1,5 @@
 # Movie Recommendation Systems
 
-Project and Setup Tutorial Presentation
-**https://www.youtube.com/watch?v=o72IUbud1Zg**
-
 ## Overview
 
 We are building a website of recommender systems to recommend
